@@ -10,26 +10,29 @@ class SearchInput extends React.Component {
     };
   }
 
+  onChangeHandler(event) {
+    event.preventDefault();
+    const value = event.target.value;
+    this.setState({ value });
+    this.props.fetchAutosuggest(value);
+  }
+
   render() {
     return (
       <ReactAutocomplete
-        items={[
-          { id: 'foo', label: 'foo' },
-          { id: 'bar', label: 'bar' },
-          { id: 'baz', label: 'baz' },
-        ]}
+        items={this.props.items}
         shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
         getItemValue={item => item.label}
         renderItem={(item, highlighted) => (
           <div
             key={item.id}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+            style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
           >
             {item.label}
           </div>
         )}
         value={this.state.value}
-        onChange={e => this.setState({ value: e.target.value })}
+        onChange={e => this.onChangeHandler(e)}
         onSelect={value => this.setState({ value })}
       />
     );
