@@ -20,7 +20,7 @@ class SearchInput extends React.Component {
   render() {
     return (
       <ReactAutocomplete
-        items={this.props.items}
+        items={this.props.autoSuggestItems}
         shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
         getItemValue={item => item.label}
         renderItem={(item, highlighted) => (

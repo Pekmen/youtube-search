@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
     return (
       <div>
       <SearchInput
-        items={this.props.searchAutsuggest}
+        autoSuggestItems={this.props.searchAutsuggest}
         fetchAutosuggest={this.props.fetchSearchAutosuggest}
       />
       </div>

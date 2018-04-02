@@ -8,7 +8,7 @@ export const fetchSearchAutosuggest = (searchTerm) => {
       origin: 'www.youtubesearch.com',
     }),
   });
-  const searchAutosuggestPayload = fetch(request).then(response => response.json());
+  const searchAutosuggestPayload = searchTerm ? fetch(request).then(response => response.json()) : [];
   return {
     type: 'FETCH_SEARCH_AUTOSUGGEST',
     payload: searchAutosuggestPayload,
