@@ -11,7 +11,7 @@ class Index extends React.Component {
 
   render() {
     return (
-        <Tab.Container defaultActiveKey="search">
+        <Tab.Container id="tabs-navigation" defaultActiveKey="search">
           <Row className="clearfix">
             <Col sm={1}>
               <Nav bsStyle="pills" stacked>
