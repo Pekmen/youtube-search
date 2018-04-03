@@ -1,12 +1,14 @@
 import React from 'react';
-import SearchBar from './containers/SearchBar';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Index from './pages/Index';
 
 const App = () => {
   return (
-    <div>
-      <p>Youtube search app</p>
-      <SearchBar />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Index} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
