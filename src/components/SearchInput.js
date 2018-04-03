@@ -17,7 +17,8 @@ class SearchInput extends React.Component {
 
   onSelectHandler(value) {
     this.setState({ value });
-    this.props.search(value);
+    this.props.search(value)
+    .then(result => this.props.fetchVideoStatistics(result));
   }
 
   render() {

@@ -26,3 +26,13 @@ export const fetchSearchVideosList = (searchTerm) => {
     payload: videoListPayload,
   };
 };
+
+export const fetchVideoStatistics = (action) => {
+  const videoIds = action.payload.items.map(item => item.id.videoId).join(',');
+  const url = `${YOUTUBE_API_URL}/videos?&part=snippet,statistics&id=${videoIds}&key=${YOUTUBE_API_KEY}`;
+  const videoStatisticsPayload = fetch(url).then((response) => response.json())
+  return {
+    type: 'FETCH_VIDEO_STATISTICS',
+    payload: videoStatisticsPayload,
+  };
+};
