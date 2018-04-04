@@ -11,29 +11,28 @@ export const fetchSearchAutosuggest = (searchTerm) => {
       origin: 'www.youtubesearch.com',
     }),
   });
-  const searchAutosuggestPayload = searchTerm ? fetch(request).then(response => response.json()) : [];
+  const searchAutosuggestPayload = (searchTerm.length > 0) ? fetch(request).then(response => response.json()) : [];
   return {
     type: 'FETCH_SEARCH_AUTOSUGGEST',
     payload: searchAutosuggestPayload,
   };
 };
 
-export const fetchSearchVideosList = (searchTerm) => {
+export const fetchVideosList = (searchTerm) => {
   const url = `${YOUTUBE_API_URL}/search?&part=snippet&maxResults=50&type=video&q=${searchTerm}&key=${YOUTUBE_API_KEY}`;
-  const videoListPayload = fetch(url).then((response) => response.json())
+  const videosListPayload = fetch(url).then((response) => response.json())
   return {
     type: 'FETCH_SEARCH_VIDEOS_LIST',
-    payload: videoListPayload,
+    payload: videosListPayload,
   };
 };
 
-export const fetchVideoStatistics = (action) => {
-  console.log('fetching video statustics___');
+export const fetchVideosInfo = (action) => {
   const videoIds = action.payload.items.map(item => item.id.videoId).join(',');
   const url = `${YOUTUBE_API_URL}/videos?&part=snippet,statistics&id=${videoIds}&key=${YOUTUBE_API_KEY}`;
-  const videoStatisticsPayload = fetch(url).then((response) => response.json())
+  const videosInfoPayload = fetch(url).then((response) => response.json())
   return {
     type: 'FETCH_VIDEO_STATISTICS',
-    payload: videoStatisticsPayload,
+    payload: videosInfoPayload,
   };
 };

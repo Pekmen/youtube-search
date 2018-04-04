@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import VideoInfo from './VideoInfo';
 
 
 class VideoList extends React.Component {
@@ -9,13 +9,7 @@ class VideoList extends React.Component {
   }
 
   render() {
-    const videoList = this.props.videos.map(video => {
-      return (
-        <Col sm={3} >
-          <p key={video.id}>{video.id}</p>
-        </Col>
-      )
-    });
+    const videoList = this.props.videosInfo.map(video => <VideoInfo key={video.id} video={video} />);
     return (
       <div>
         {videoList}

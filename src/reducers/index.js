@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import searchAutosuggest from './searchAutosuggest';
-import searchVideoList from './searchVideosList';
-import videoStatistics from './videoStatistics';
+import videosList from './videosList';
+import videosInfo from './videosInfo';
 
 const reducer = combineReducers({
   searchAutosuggest,
-  searchVideoList,
-  videoStatistics,
+  videosList,
+  videosInfo,
 });
 
 export default reducer;

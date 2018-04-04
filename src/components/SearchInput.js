@@ -17,8 +17,8 @@ class SearchInput extends React.Component {
 
   onSelectHandler(value) {
     this.setState({ value });
-    this.props.search(value)
-    .then(result => this.props.fetchVideoStatistics(result));
+    this.props.fetchVideosList(value)
+    .then(result => this.props.fetchVideosInfo(result));
   }
 
   render() {
@@ -40,7 +40,7 @@ class SearchInput extends React.Component {
           onChange={e => this.onChangeHandler(e.target.value)}
           onSelect={value => this.onSelectHandler(value)}
         />
-        <button onClick={() => this.props.search(this.state.value) }>SEARCH</button>
+        <button onClick={() => this.props.fetchVideosList(this.state.value)}>SEARCH</button>
       </div>
     );
   }

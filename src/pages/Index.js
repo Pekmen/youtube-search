@@ -12,7 +12,6 @@ class Index extends React.Component {
   }
 
   render() {
-    console.log('this.props.videoStatistics___', this.props.videoStatistics);
     return (
         <Tab.Container id="tabs-navigation" defaultActiveKey="search">
           <Row className="clearfix">
@@ -29,7 +28,7 @@ class Index extends React.Component {
                   <p>Youtube search app</p>
                   <SearchBar />
                   <Row className="clearfix">
-                    <VideoList videos={this.props.videoStatistics}/>
+                    <VideoList videosInfo={this.props.videosInfo} />
                   </Row>
                 </Grid>
                 </Tab.Pane>
@@ -48,7 +47,7 @@ class Index extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    videoStatistics: state.videoStatistics,
+    videosInfo: state.videosInfo,
   };
 };
 
