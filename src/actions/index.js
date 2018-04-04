@@ -30,7 +30,7 @@ export const fetchVideosList = (searchTerm) => {
 export const fetchVideosInfo = (action) => {
   const videoIds = action.payload.items.map(item => item.id.videoId).join(',');
   const url = `${YOUTUBE_API_URL}/videos?&part=snippet,statistics&id=${videoIds}&key=${YOUTUBE_API_KEY}`;
-  const videosInfoPayload = fetch(url).then((response) => response.json())
+  const videosInfoPayload = fetch(url).then((response) => response.json());
   return {
     type: 'FETCH_VIDEO_STATISTICS',
     payload: videosInfoPayload,
@@ -38,7 +38,6 @@ export const fetchVideosInfo = (action) => {
 };
 
 export const saveVideo = (video) => {
-  console.log('saving video___', video);
   return {
     type: 'SAVE_VIDEO',
     payload: video,

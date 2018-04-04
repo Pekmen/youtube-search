@@ -2,10 +2,15 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 
 const VideoInfo = (props) => {
+  const { video, saveVideo } = props;
   return (
     <Col sm={3}>
-    <p >{props.video.id}</p>
-    <button onClick={() => props.saveVideo(props.video.id)}>Save</button>
+    <p>{video.id}</p>
+    {
+      (saveVideo)
+      ? <button onClick={() => saveVideo(video)}>Save</button>
+      : null
+    }
     </Col>
   );
 };
