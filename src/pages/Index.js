@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Nav, NavItem, Tab } from 'react-bootstrap';
-import SearchBar from '../containers/SearchBar';
+import SearchBar from '../components/SearchBar';
 import VideoList from '../components/VideoList';
 
 
@@ -34,7 +34,8 @@ class Index extends React.Component {
                 </Tab.Pane>
                 <Tab.Pane eventKey="saved">
                   <Grid>
-                    My Videos Content
+                    Saved videos
+                    <VideoList videosInfo={this.props.videosInfo} showingSaved />
                   </Grid>
                 </Tab.Pane>
               </Tab.Content>

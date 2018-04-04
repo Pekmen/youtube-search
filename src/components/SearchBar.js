@@ -39,6 +39,6 @@ const mapDispatchToProps = (dispatch) => {
     fetchVideosList,
     fetchVideosInfo,
   }, dispatch);
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

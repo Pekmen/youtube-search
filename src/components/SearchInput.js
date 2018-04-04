@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactAutocomplete from 'react-autocomplete';
+import { Button } from 'react-bootstrap';
 
 
 class SearchInput extends React.Component {
@@ -31,7 +32,7 @@ class SearchInput extends React.Component {
           renderItem={(item, highlighted) => (
             <div
               key={item.id}
-              style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent', zIndex: 999 }}
             >
               {item.label}
             </div>
@@ -40,7 +41,7 @@ class SearchInput extends React.Component {
           onChange={e => this.onChangeHandler(e.target.value)}
           onSelect={value => this.onSelectHandler(value)}
         />
-        <button onClick={() => this.props.fetchVideosList(this.state.value)}>SEARCH</button>
+        <Button onClick={() => this.props.fetchVideosList(this.state.value)}>SEARCH</Button>
       </div>
     );
   }
