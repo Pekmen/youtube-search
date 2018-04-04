@@ -31,7 +31,7 @@ class SearchInput extends React.Component {
           renderItem={(item, highlighted) => (
             <div
               key={item.id}
-              style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent', zIndex: 999 }}
             >
               {item.label}
             </div>
