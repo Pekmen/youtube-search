@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Nav, NavItem, Tab } from 'react-bootstrap';
 import SearchBar from '../containers/SearchBar';
-import VideoList from '../components/VideoList';
+import VideoList from '../containers/VideoList';
 
 
 class Index extends React.Component {

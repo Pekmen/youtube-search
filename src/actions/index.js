@@ -36,3 +36,11 @@ export const fetchVideosInfo = (action) => {
     payload: videosInfoPayload,
   };
 };
+
+export const saveVideo = (video) => {
+  console.log('saving video___', video);
+  return {
+    type: 'SAVE_VIDEO',
+    payload: video,
+  };
+};
