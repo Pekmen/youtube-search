@@ -10,31 +10,38 @@ class SearchInput extends React.Component {
     };
   }
 
-  onChangeHandler(event) {
-    event.preventDefault();
-    const value = event.target.value;
+  onChangeHandler(value) {
     this.setState({ value });
     this.props.fetchAutosuggest(value);
   }
 
+  onSelectHandler(value) {
+    this.setState({ value });
+    this.props.fetchVideosList(value)
+    .then(result => this.props.fetchVideosInfo(result));
+  }
+
   render() {
     return (
-      <ReactAutocomplete
-        items={this.props.autoSuggestItems}
-        shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
-        getItemValue={item => item.label}
-        renderItem={(item, highlighted) => (
-          <div
-            key={item.id}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
-          >
-            {item.label}
-          </div>
-        )}
-        value={this.state.value}
-        onChange={e => this.onChangeHandler(e)}
-        onSelect={value => this.setState({ value })}
-      />
+      <div>
+        <ReactAutocomplete
+          items={this.props.autoSuggestItems}
+          shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
+          getItemValue={item => item.label}
+          renderItem={(item, highlighted) => (
+            <div
+              key={item.id}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
+            >
+              {item.label}
+            </div>
+          )}
+          value={this.state.value}
+          onChange={e => this.onChangeHandler(e.target.value)}
+          onSelect={value => this.onSelectHandler(value)}
+        />
+        <button onClick={() => this.props.fetchVideosList(this.state.value)}>SEARCH</button>
+      </div>
     );
   }
 }

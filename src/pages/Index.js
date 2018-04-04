@@ -1,6 +1,8 @@
 import React from 'react';
-import { Row, Col, Nav, NavItem, Tabs, Tab } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Grid, Row, Col, Nav, NavItem, Tab } from 'react-bootstrap';
 import SearchBar from '../containers/SearchBar';
+import VideoList from '../components/VideoList';
 
 
 class Index extends React.Component {
@@ -11,7 +13,7 @@ class Index extends React.Component {
 
   render() {
     return (
-        <Tab.Container defaultActiveKey="search">
+        <Tab.Container id="tabs-navigation" defaultActiveKey="search">
           <Row className="clearfix">
             <Col sm={1}>
               <Nav bsStyle="pills" stacked>
@@ -22,10 +24,19 @@ class Index extends React.Component {
             <Col sm={11}>
               <Tab.Content animation>
                 <Tab.Pane eventKey="search">
+                <Grid>
                   <p>Youtube search app</p>
                   <SearchBar />
+                  <Row className="clearfix">
+                    <VideoList videosInfo={this.props.videosInfo} />
+                  </Row>
+                </Grid>
                 </Tab.Pane>
-                <Tab.Pane eventKey="saved">My Videos Content</Tab.Pane>
+                <Tab.Pane eventKey="saved">
+                  <Grid>
+                    My Videos Content
+                  </Grid>
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
@@ -34,4 +45,10 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+const mapStateToProps = (state) => {
+  return {
+    videosInfo: state.videosInfo,
+  };
+};
+
+export default connect(mapStateToProps)(Index);

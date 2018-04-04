@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchInput from '../components/SearchInput';
-import { fetchSearchAutosuggest } from '../actions';
+import { fetchSearchAutosuggest, fetchVideosList, fetchVideosInfo } from '../actions';
 
 
 class SearchBar extends React.Component {
@@ -15,8 +15,11 @@ class SearchBar extends React.Component {
     return (
       <div>
       <SearchInput
-        autoSuggestItems={this.props.searchAutsuggest}
+        autoSuggestItems={this.props.searchAutosuggest}
         fetchAutosuggest={this.props.fetchSearchAutosuggest}
+        fetchVideosList={this.props.fetchVideosList}
+        videosInfo={this.props.videosInfo.items}
+        fetchVideosInfo={this.props.fetchVideosInfo}
       />
       </div>
     );
@@ -25,13 +28,16 @@ class SearchBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    searchAutsuggest: state.searchAutsuggest,
+    searchAutosuggest: state.searchAutosuggest,
+    videosInfo: state.videosInfo,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchSearchAutosuggest,
+    fetchVideosList,
+    fetchVideosInfo,
   }, dispatch);
 }
 

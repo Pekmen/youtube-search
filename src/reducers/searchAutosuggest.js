@@ -1,4 +1,4 @@
-const searchAutsuggest = (state = [], action) => {
+const searchAutosuggest = (state = [], action) => {
   if (action.type === 'FETCH_SEARCH_AUTOSUGGEST') {
     if (action.payload && action.payload[1]) {
       const cleanedPayload = action.payload[1].map((suggestion, index) => {
@@ -11,4 +11,4 @@ const searchAutsuggest = (state = [], action) => {
   return state;
 };
 
-export default searchAutsuggest;
+export default searchAutosuggest;
