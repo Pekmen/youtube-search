@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
         autoSuggestItems={this.props.searchAutosuggest}
         fetchAutosuggest={this.props.fetchSearchAutosuggest}
         search={this.props.fetchSearchVideosList}
-        videoStatistics={this.props.videoStatistics}
+        videoStatistics={this.props.videoStatistics.items}
         fetchVideoStatistics={this.props.fetchVideoStatistics}
       />
       </div>

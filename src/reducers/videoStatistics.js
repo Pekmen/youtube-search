@@ -1,6 +1,9 @@
-const videoStatistics = (state = {}, action) => {
+const videoStatistics = (state = [], action) => {
   if (action.type === 'FETCH_VIDEO_STATISTICS') {
-    return action.payload;
+    if (action.payload && action.payload.items) {
+      return action.payload.items;
+    }
+    return [];
   }
   return state;
 };
