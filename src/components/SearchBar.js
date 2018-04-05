@@ -18,17 +18,21 @@ import SearchInput from './SearchInput';
 import YearFilter from './YearFilter';
 
 
+/* Container for search-relevant components.
+* This component will fetch all relevant data for successful search query
+*/
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.searchVideos = this.searchVideos.bind(this);
   }
 
   componentDidMount() {
+    // initial fetch of youtube categories. this is stored inside localstorage
     this.props.fetchVideoCategories();
   }
 
+  // main search function, the end result is an object with complete video info
   searchVideos(term, category, year) {
     if (term.length === 0) return;
     this.props.fetchVideosList(term, category, year)

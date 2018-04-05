@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Grid } from 'react-bootstrap';
 import Index from './pages/Index';
 
+/* Main app component
+*/
 const App = () => {
   return (
     <BrowserRouter>

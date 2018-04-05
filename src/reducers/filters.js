@@ -1,4 +1,6 @@
-const filters = (state = { categoryId: '0', year: '2018' }, action) => {
+import { CURRENT_YEAR } from '../constants';
+
+const filters = (state = { categoryId: '0', year: CURRENT_YEAR }, action) => {
   if (action.type === 'SET_CATEGORY_FILTER') {
     return {
       categoryId: action.categoryId,

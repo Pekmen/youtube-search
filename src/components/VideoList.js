@@ -6,6 +6,9 @@ import VideoInfo from '../components/VideoInfo';
 import { saveVideo } from '../actions';
 
 
+/* Container for displaying Video Info components. Save button ommited if called by
+* Show Saved Videos tab
+*/
 class VideoList extends React.Component {
   constructor(props) {
     super(props);

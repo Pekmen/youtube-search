@@ -2,10 +2,17 @@ import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+// returns human readable large numbers
 const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
+
+/* Compnent which will display all data for relevant video. Save button will be
+* ommited if initialized in Show Saved Videos tab
+*/
 const VideoInfo = (props) => {
   const { video, saveVideo } = props;
+
+  // older videos don't have larger thumbnails
   const thumbnail = video.thumbnails.standard ? video.thumbnails.standard : video.thumbnails.default;
   return (
     <Col xs={12} sm={4} lg={3}>
