@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
@@ -39,7 +39,7 @@ class SearchBar extends React.Component {
     return (
       <div className="searchbar-wrapper">
           <Row>
-            <Col sm={6}>
+            <Col xs={12} sm={6}>
               <SearchInput
                 autoSuggestItems={this.props.searchAutosuggest}
                 fetchAutosuggest={this.props.fetchSearchAutosuggest}
@@ -50,7 +50,7 @@ class SearchBar extends React.Component {
                 searchVideos={this.searchVideos}
               />
             </Col>
-            <Col xs={6} sm={3}>
+            <Col xs={8} sm={3}>
               <CategoryFilter
                 videoCategories={this.props.videoCategories}
                 setCategoryFilter={this.props.setCategoryFilter}
@@ -59,7 +59,7 @@ class SearchBar extends React.Component {
                 searchVideos={this.searchVideos}
               />
             </Col>
-            <Col xs={6} sm={3}>
+            <Col xs={4} sm={3}>
               <YearFilter
                 searchTerm={this.props.searchTerm}
                 filters={this.props.filters}
