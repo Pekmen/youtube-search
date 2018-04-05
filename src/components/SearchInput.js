@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
-import { Button } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 
 
 class SearchInput extends React.Component {
@@ -28,7 +28,7 @@ class SearchInput extends React.Component {
   render() {
     const { categoryId, year } = this.props.filters;
     return (
-      <div>
+      <div className="search-input-wrapper">
         <ReactAutocomplete
           items={this.props.autoSuggestItems}
           shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
@@ -44,8 +44,20 @@ class SearchInput extends React.Component {
           value={this.state.value}
           onChange={e => this.onChangeHandler(e.target.value)}
           onSelect={value => this.onSelectHandler(value)}
+          menuStyle={
+            {
+              borderRadius: '3px',
+              boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+              background: 'rgba(255, 255, 255, 0.9)',
+              padding: '2px 0',
+              fontSize: '90%',
+              position: 'fixed',
+              overflow: 'auto',
+              maxHeight: '50%', // TODO: don't cheat, let it flow to the bottom
+            }
+          }
         />
-        <Button onClick={() => this.props.searchVideos(this.state.value, categoryId, year)}>SEARCH</Button>
+        <i className="fas fa-lg fa-search search-icon" />
       </div>
     );
   }
@@ -56,6 +68,7 @@ SearchInput.propTypes = {
     categoryId: PropTypes.string,
     year: PropTypes.string,
   }).isRequired,
+  autoSuggestItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   setSearchTerm: PropTypes.func.isRequired,
   fetchAutosuggest: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired,

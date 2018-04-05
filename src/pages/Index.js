@@ -15,33 +15,31 @@ class Index extends React.Component {
   render() {
     return (
         <Tab.Container id="tabs-navigation" defaultActiveKey="search">
+        <Grid>
           <Row className="clearfix">
-            <Col sm={1}>
+            <Col sm={2}>
               <Nav bsStyle="pills" stacked>
                 <NavItem eventKey="search">Search Videos</NavItem>
                 <NavItem eventKey="saved">My Videos</NavItem>
               </Nav>
             </Col>
-            <Col sm={11}>
+            <Col sm={10}>
               <Tab.Content animation>
                 <Tab.Pane eventKey="search">
-                <Grid>
-                  <p>Youtube search app</p>
-                  <SearchBar />
+                  <Row className="clearfix">
+                    <SearchBar />
+                  </Row>
                   <Row className="clearfix">
                     <VideoList videosInfo={this.props.videosInfo} />
                   </Row>
-                </Grid>
                 </Tab.Pane>
                 <Tab.Pane eventKey="saved">
-                  <Grid>
-                    Saved videos
                     <VideoList videosInfo={this.props.videosInfo} showingSaved />
-                  </Grid>
                 </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
+        </Grid>
         </Tab.Container>
     );
   }

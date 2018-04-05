@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid, Row } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import VideoInfo from '../components/VideoInfo';
@@ -27,7 +28,7 @@ class VideoList extends React.Component {
     });
 
     return (
-      <div>
+      <div className="video-list">
         {videoInfoList}
       </div>
     );

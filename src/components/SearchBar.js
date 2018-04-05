@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
@@ -36,29 +37,37 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <SearchInput
-          autoSuggestItems={this.props.searchAutosuggest}
-          fetchAutosuggest={this.props.fetchSearchAutosuggest}
-          videosInfo={this.props.videosInfo.items}
-          filters={this.props.filters}
-          setSearchTerm={this.props.setSearchTerm}
-          searchTerm={this.props.searchTerm}
-          searchVideos={this.searchVideos}
-        />
-        <CategoryFilter
-          videoCategories={this.props.videoCategories}
-          setCategoryFilter={this.props.setCategoryFilter}
-          searchTerm={this.props.searchTerm}
-          filters={this.props.filters}
-          searchVideos={this.searchVideos}
-        />
-        <YearFilter
-          searchTerm={this.props.searchTerm}
-          filters={this.props.filters}
-          setYearFilter={this.props.setYearFilter}
-          searchVideos={this.searchVideos}
-        />
+      <div className="searchbar-wrapper">
+          <Row>
+            <Col sm={6}>
+              <SearchInput
+                autoSuggestItems={this.props.searchAutosuggest}
+                fetchAutosuggest={this.props.fetchSearchAutosuggest}
+                videosInfo={this.props.videosInfo.items}
+                filters={this.props.filters}
+                setSearchTerm={this.props.setSearchTerm}
+                searchTerm={this.props.searchTerm}
+                searchVideos={this.searchVideos}
+              />
+            </Col>
+            <Col xs={6} sm={3}>
+              <CategoryFilter
+                videoCategories={this.props.videoCategories}
+                setCategoryFilter={this.props.setCategoryFilter}
+                searchTerm={this.props.searchTerm}
+                filters={this.props.filters}
+                searchVideos={this.searchVideos}
+              />
+            </Col>
+            <Col xs={6} sm={3}>
+              <YearFilter
+                searchTerm={this.props.searchTerm}
+                filters={this.props.filters}
+                setYearFilter={this.props.setYearFilter}
+                searchVideos={this.searchVideos}
+              />
+            </Col>
+          </Row>
       </div>
     );
   }

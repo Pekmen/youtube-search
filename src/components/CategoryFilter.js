@@ -13,12 +13,11 @@ const CategoryFilter = (props) => {
 
   return (
     <FormGroup controlId="formControlsVideoCategory">
-      <ControlLabel>Select Category</ControlLabel>
       <FormControl componentClass="select" placeholder="select" onChange={e => onChangeHandler(e)}>
-        <option value={0}>All Categories-0</option>
+        <option value={0}>All Categories</option>
       {
         props.videoCategories.map((category) => {
-          return <option key={category.id} value={category.id}>{category.title}-{category.id}</option>
+          return <option key={category.id} value={category.id}>{category.title}</option>
         })
       }
       </FormControl>
