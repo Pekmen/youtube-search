@@ -26,7 +26,6 @@ class Index extends React.Component {
               <Tab.Content animation>
                 <Tab.Pane eventKey="search">
                 <Grid>
-                  <p>Youtube search app</p>
                   <SearchBar />
                   <Row className="clearfix">
                     <VideoList videosInfo={this.props.videosInfo} />
@@ -34,10 +33,7 @@ class Index extends React.Component {
                 </Grid>
                 </Tab.Pane>
                 <Tab.Pane eventKey="saved">
-                  <Grid>
-                    Saved videos
                     <VideoList videosInfo={this.props.videosInfo} showingSaved />
-                  </Grid>
                 </Tab.Pane>
               </Tab.Content>
             </Col>

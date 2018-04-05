@@ -28,7 +28,7 @@ class SearchInput extends React.Component {
   render() {
     const { categoryId, year } = this.props.filters;
     return (
-      <div>
+      <div className="search-input-wrapper">
         <ReactAutocomplete
           items={this.props.autoSuggestItems}
           shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
@@ -56,6 +56,7 @@ SearchInput.propTypes = {
     categoryId: PropTypes.string,
     year: PropTypes.string,
   }).isRequired,
+  autoSuggestItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   setSearchTerm: PropTypes.func.isRequired,
   fetchAutosuggest: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired,

@@ -1,1 +1,25 @@
+.searchbar-wrapper {
+  background: red;
+}
 
+.video-info-wrapper {
+  margin-bottom: 3em;
+
+  img {
+    width: 100%;
+  }
+
+  .video-views,
+  .video-likes {
+    color: grey;
+  }
+
+  .video-views {
+    float: left;
+  }
+
+  .video-likes {
+    float: right;
+  }
+
+}

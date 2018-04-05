@@ -13,7 +13,6 @@ const CategoryFilter = (props) => {
 
   return (
     <FormGroup controlId="formControlsVideoCategory">
-      <ControlLabel>Select Category</ControlLabel>
       <FormControl componentClass="select" placeholder="select" onChange={e => onChangeHandler(e)}>
         <option value={0}>All Categories-0</option>
       {

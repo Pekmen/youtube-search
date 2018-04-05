@@ -22,16 +22,15 @@ class CategoryFilter extends React.Component {
   render() {
     return (
       <FormGroup controlId="formControlsYearPublished">
-      <ControlLabel>Select Category</ControlLabel>
-      <input
-        type="range"
-        min={2005}
-        max={2018}
-        step={1}
-        value={this.state.yearValue}
-        onChange={e => this.onChangeHandler(e)}
-      />
-      <span>{this.state.yearValue}</span>
+        <input
+          type="range"
+          min={2005}
+          max={2018}
+          step={1}
+          value={this.state.yearValue}
+          onChange={e => this.onChangeHandler(e)}
+        />
+        <span>{this.state.yearValue}</span>
       </FormGroup>
     );
   }
