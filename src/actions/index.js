@@ -32,7 +32,6 @@ export const fetchVideosList = (searchTerm, categoryId, yearPublished) => {
     const yearQuery = `publishedAfter=${yearPublished}-01-01T00:00:00Z&publishedBefore=${yearPublished}-12-31T23:59:59Z`;
     url = `${url}&${yearQuery}`;
   }
-  console.log('url___', url);
   const videosListPayload = fetch(url).then((response) => response.json())
   return {
     type: 'FETCH_SEARCH_VIDEOS_LIST',

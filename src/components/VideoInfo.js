@@ -5,7 +5,7 @@ const VideoInfo = (props) => {
   const { video, saveVideo } = props;
   return (
     <Col sm={3}>
-    <p>{video.id}-{video.categoryId}</p>
+    <p>{video.id}-{video.categoryId}-{video.year}</p>
     {
       (saveVideo)
       ? <button onClick={() => saveVideo(video)}>Save</button>

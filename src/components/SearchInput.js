@@ -18,13 +18,14 @@ class SearchInput extends React.Component {
   }
 
   onSelectHandler(value) {
+    const { categoryId, year } = this.props;
     this.setState({ value });
     this.props.setSearchTerm(value);
-    this.props.fetchVideosList(value, this.props.filters.categoryId)
-      .then(result => this.props.fetchVideosInfo(result.payload.items));
+    this.props.searchVideos(value, categoryId, year);
   }
 
   render() {
+    const { categoryId, year } = this.props;
     return (
       <div>
         <ReactAutocomplete
@@ -43,7 +44,7 @@ class SearchInput extends React.Component {
           onChange={e => this.onChangeHandler(e.target.value)}
           onSelect={value => this.onSelectHandler(value)}
         />
-        <Button onClick={() => this.props.fetchVideosList(this.state.value)}>SEARCH</Button>
+        <Button onClick={() => this.props.searchVideos(this.state.value, categoryId, year)}>SEARCH</Button>
       </div>
     );
   }

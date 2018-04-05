@@ -6,9 +6,7 @@ const CategoryFilter = (props) => {
   function onChangeHandler(e) {
     e.preventDefault();
     props.setCategoryFilter(e.target.value);
-    if (props.searchTerm.length === 0) return;
-    props.fetchVideosList(props.searchTerm, e.target.value, props.filters.year)
-      .then(result => props.fetchVideosInfo(result.payload.items));
+    props.searchVideos(props.searchTerm, e.target.value, props.filters.year);
   }
 
   return (

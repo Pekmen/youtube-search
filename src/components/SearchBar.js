@@ -20,10 +20,17 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.searchVideos = this.searchVideos.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchVideoCategories();
+  }
+
+  searchVideos(term, category, year) {
+    if (term.length === 0) return;
+    this.props.fetchVideosList(term, category, year)
+      .then(result => this.props.fetchVideosInfo(result.payload.items));
   }
 
   render() {
@@ -32,27 +39,24 @@ class SearchBar extends React.Component {
         <SearchInput
           autoSuggestItems={this.props.searchAutosuggest}
           fetchAutosuggest={this.props.fetchSearchAutosuggest}
-          fetchVideosList={this.props.fetchVideosList}
           videosInfo={this.props.videosInfo.items}
-          fetchVideosInfo={this.props.fetchVideosInfo}
           filters={this.props.filters}
           setSearchTerm={this.props.setSearchTerm}
           searchTerm={this.props.searchTerm}
+          searchVideos={this.searchVideos}
         />
         <CategoryFilter
           videoCategories={this.props.videoCategories}
-          fetchVideosList={this.props.fetchVideosList}
           setCategoryFilter={this.props.setCategoryFilter}
-          videosList={this.props.videosList}
-          fetchVideosInfo={this.props.fetchVideosInfo}
           searchTerm={this.props.searchTerm}
           filters={this.props.filters}
+          searchVideos={this.searchVideos}
         />
         <YearFilter
           searchTerm={this.props.searchTerm}
           filters={this.props.filters}
-          fetchVideosInfo={this.props.fetchVideosInfo}
-          fetchVideosList={this.props.fetchVideosList}
+          setYearFilter={this.props.setYearFilter}
+          searchVideos={this.searchVideos}
         />
       </div>
     );
@@ -77,6 +81,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchVideosInfo,
     fetchVideoCategories,
     setCategoryFilter,
+    setYearFilter,
     setSearchTerm,
   }, dispatch);
 };
