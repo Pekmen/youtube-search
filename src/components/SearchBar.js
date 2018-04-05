@@ -12,7 +12,8 @@ import {
 } from '../actions';
 
 import CategoryFilter from './CategoryFilter';
-import SearchInput from '../components/SearchInput';
+import SearchInput from './SearchInput';
+import YearFilter from './YearFilter';
 
 
 class SearchBar extends React.Component {
@@ -28,24 +29,31 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div>
-      <SearchInput
-        autoSuggestItems={this.props.searchAutosuggest}
-        fetchAutosuggest={this.props.fetchSearchAutosuggest}
-        fetchVideosList={this.props.fetchVideosList}
-        videosInfo={this.props.videosInfo.items}
-        fetchVideosInfo={this.props.fetchVideosInfo}
-        filters={this.props.filters}
-        setSearchTerm={this.props.setSearchTerm}
-        searchTerm={this.props.searchTerm}
-      />
-      <CategoryFilter
-        videoCategories={this.props.videoCategories}
-        fetchVideosList={this.props.fetchVideosList}
-        updateCategoryFilter={this.props.setCategoryFilter}
-        videosList={this.props.videosList}
-        fetchVideosInfo={this.props.fetchVideosInfo}
-        searchTerm={this.props.searchTerm}
-        filters={this.props.filters} />
+        <SearchInput
+          autoSuggestItems={this.props.searchAutosuggest}
+          fetchAutosuggest={this.props.fetchSearchAutosuggest}
+          fetchVideosList={this.props.fetchVideosList}
+          videosInfo={this.props.videosInfo.items}
+          fetchVideosInfo={this.props.fetchVideosInfo}
+          filters={this.props.filters}
+          setSearchTerm={this.props.setSearchTerm}
+          searchTerm={this.props.searchTerm}
+        />
+        <CategoryFilter
+          videoCategories={this.props.videoCategories}
+          fetchVideosList={this.props.fetchVideosList}
+          setCategoryFilter={this.props.setCategoryFilter}
+          videosList={this.props.videosList}
+          fetchVideosInfo={this.props.fetchVideosInfo}
+          searchTerm={this.props.searchTerm}
+          filters={this.props.filters}
+        />
+        <YearFilter
+          searchTerm={this.props.searchTerm}
+          filters={this.props.filters}
+          fetchVideosInfo={this.props.fetchVideosInfo}
+          fetchVideosList={this.props.fetchVideosList}
+        />
       </div>
     );
   }

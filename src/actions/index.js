@@ -25,9 +25,14 @@ export const fetchSearchAutosuggest = (searchTerm) => {
   };
 };
 
-export const fetchVideosList = (searchTerm, categoryId) => {
+export const fetchVideosList = (searchTerm, categoryId, yearPublished) => {
   let url = `${YOUTUBE_API_URL}/search?&part=snippet&maxResults=10&type=video&q=${searchTerm}&key=${YOUTUBE_API_KEY}`;
   if (categoryId) url = `${url}&videoCategoryId=${categoryId}`;
+  if (yearPublished) {
+    const yearQuery = `publishedAfter=${yearPublished}-01-01T00:00:00Z&publishedBefore=${yearPublished}-12-31T23:59:59Z`;
+    url = `${url}&${yearQuery}`;
+  }
+  console.log('url___', url);
   const videosListPayload = fetch(url).then((response) => response.json())
   return {
     type: 'FETCH_SEARCH_VIDEOS_LIST',
