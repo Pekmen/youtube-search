@@ -6,10 +6,11 @@ body {
   background: red;
   padding: 2em 4em 1em;
   position: relative;
-  z-index: 999;
 
   .search-input-wrapper {
     margin-bottom: 10px;
+    position: relative;
+    z-index: 9;
 
     :first-child {
       width: 100%;
@@ -48,6 +49,7 @@ body {
 }
 
 .video-info-wrapper {
+  margin-top: 2em;
   margin-bottom: 3em;
   height: 20em;
 
