@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
@@ -63,13 +64,30 @@ class SearchBar extends React.Component {
   }
 }
 
+SearchBar.propTypes = {
+  searchAutosuggest: PropTypes.arrayOf(PropTypes.object).isRequired,
+  videosInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
+  videoCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filters: PropTypes.shape({
+    categoryId: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  fetchSearchAutosuggest: PropTypes.func.isRequired,
+  fetchVideosList: PropTypes.func.isRequired,
+  fetchVideosInfo: PropTypes.func.isRequired,
+  fetchVideoCategories: PropTypes.func.isRequired,
+  setCategoryFilter: PropTypes.func.isRequired,
+  setYearFilter: PropTypes.func.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => {
   return {
     searchAutosuggest: state.searchAutosuggest,
     videosInfo: state.videosInfo,
     videoCategories: state.videoCategories,
     filters: state.filters,
-    videosList: state.videosList,
     searchTerm: state.searchTerm,
   };
 };

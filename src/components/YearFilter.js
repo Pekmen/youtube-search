@@ -1,12 +1,14 @@
 import React from 'react';
-import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { FormGroup, ControlLabel } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 
 class CategoryFilter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       yearValue: 2018,
-    }
+    };
   }
   onChangeHandler(e) {
     const { searchTerm } = this.props;
@@ -34,5 +36,15 @@ class CategoryFilter extends React.Component {
     );
   }
 }
+
+CategoryFilter.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  filters: PropTypes.shape({
+    categoryId: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
+  setYearFilter: PropTypes.func.isRequired,
+  searchVideos: PropTypes.func.isRequired,
+};
 
 export default CategoryFilter;

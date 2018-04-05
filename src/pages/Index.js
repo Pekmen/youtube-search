@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Nav, NavItem, Tab } from 'react-bootstrap';
 import SearchBar from '../components/SearchBar';
@@ -46,10 +47,15 @@ class Index extends React.Component {
   }
 }
 
+Index.propTypes = {
+  videosInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 const mapStateToProps = (state) => {
   return {
     videosInfo: state.videosInfo,
   };
 };
+
 
 export default connect(mapStateToProps)(Index);
