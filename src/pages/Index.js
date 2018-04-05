@@ -5,7 +5,10 @@ import { Grid, Row, Col, Nav, NavItem, Tab } from 'react-bootstrap';
 import SearchBar from '../components/SearchBar';
 import VideoList from '../components/VideoList';
 
-
+/* Index Component
+* Holds tab pills for two main views - Search Videos and Saved Videos
+* Will pass down videosInfo state
+*/
 class Index extends React.Component {
   constructor(props) {
     super(props);

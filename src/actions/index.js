@@ -1,7 +1,10 @@
-const AUTOSUGGEST_URL = 'https://suggestqueries.google.com/complete/search?client=firefox&ds=yt';
-const CORS_PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
-const YOUTUBE_API_KEY = 'AIzaSyDyB5bG6pVipF8jWCAoODHj3PYv3uXmYBQ';
+import {
+  AUTOSUGGEST_URL,
+  CORS_PROXY_URL,
+  YOUTUBE_API_URL,
+  YOUTUBE_API_KEY,
+  CURRENT_YEAR,
+} from '../constants';
 
 
 export const setSearchTerm = (searchTerm) => {
@@ -11,6 +14,8 @@ export const setSearchTerm = (searchTerm) => {
   };
 };
 
+
+// The request is first passed to CORS proxy server, to avoid Cross-Origin errors
 export const fetchSearchAutosuggest = (searchTerm) => {
   const FULL_URL = `${CORS_PROXY_URL}${AUTOSUGGEST_URL}&q=${searchTerm}`;
   const request = new Request(FULL_URL, {
@@ -18,6 +23,7 @@ export const fetchSearchAutosuggest = (searchTerm) => {
       origin: 'www.youtubesearch.com',
     }),
   });
+  // fetch only if valid search term is provided
   const searchAutosuggestPayload = (searchTerm.length > 0) ? fetch(request).then(response => response.json()) : [];
   return {
     type: 'FETCH_SEARCH_AUTOSUGGEST',
@@ -25,39 +31,50 @@ export const fetchSearchAutosuggest = (searchTerm) => {
   };
 };
 
+
+// Initial videos from passed search terms. The payload is base from which
+// videosInfo array is fetched
 export const fetchVideosList = (searchTerm, categoryId, yearPublished) => {
   let url = `${YOUTUBE_API_URL}/search?&part=snippet&maxResults=50&type=video&q=${searchTerm}&key=${YOUTUBE_API_KEY}`;
+
+  // filter queries
   if (categoryId > 0) url = `${url}&videoCategoryId=${categoryId}`;
   if (yearPublished) {
     const yearQuery = `publishedAfter=${yearPublished}-01-01T00:00:00Z&publishedBefore=${yearPublished}-12-31T23:59:59Z`;
     url = `${url}&${yearQuery}`;
   }
-  console.log('url___', url);
-  const videosListPayload = fetch(url).then((response) => response.json())
+
+  const videosListPayload = fetch(url).then(response => response.json())
   return {
     type: 'FETCH_SEARCH_VIDEOS_LIST',
     payload: videosListPayload,
   };
 };
 
+
+// Main state object holding all relevant info about videos
 export const fetchVideosInfo = (videosList) => {
   const videoIds = videosList.map(item => item.id.videoId).join(',');
   const url = `${YOUTUBE_API_URL}/videos?&part=snippet,statistics&id=${videoIds}&key=${YOUTUBE_API_KEY}`;
-  const videosInfoPayload = fetch(url).then((response) => response.json());
+  const videosInfoPayload = fetch(url).then(response => response.json());
   return {
     type: 'FETCH_VIDEO_STATISTICS',
     payload: videosInfoPayload,
   };
 };
 
+
+// List of Youtube video categories. This is called only once on app start, and result
+// is stored inside localstorage
 export const fetchVideoCategories = () => {
   const url = `${YOUTUBE_API_URL}/videoCategories?part=snippet&regionCode=US&key=${YOUTUBE_API_KEY}`;
-  const videoCategoriesPayload = fetch(url).then((response) => response.json());
+  const videoCategoriesPayload = fetch(url).then(response => response.json());
   return {
     type: 'FETCH_VIDEO_CATEGORIES',
     payload: videoCategoriesPayload,
   };
 };
+
 
 export const saveVideo = (video) => {
   return {
@@ -65,6 +82,7 @@ export const saveVideo = (video) => {
     payload: video,
   };
 };
+
 
 export const setCategoryFilter = (categoryId) => {
   return {

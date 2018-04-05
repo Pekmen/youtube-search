@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
 
-
+/* Component holding search input. Input is handled with third party library
+* React Autocomplete. It fetches new data for autocomplete on every change
+*/
 class SearchInput extends React.Component {
   constructor(props) {
     super(props);
@@ -11,12 +13,15 @@ class SearchInput extends React.Component {
     };
   }
 
+  // update store with new search term and fetch new autosuggest list
   onChangeHandler(value) {
     this.setState({ value });
     this.props.setSearchTerm(value);
     this.props.fetchAutosuggest(value);
   }
 
+  // on every select update store with new search term and search youtube for
+  // relevant videos
   onSelectHandler(value) {
     const { categoryId, year } = this.props.filters;
     this.setState({ value });

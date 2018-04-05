@@ -1,3 +1,5 @@
+/* Fetch data from localstore and convert it to JSON object
+*/
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('storedState');
@@ -10,6 +12,8 @@ export const loadState = () => {
   }
 };
 
+/* Convert data to string and store it inside localstorage
+*/
 export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);

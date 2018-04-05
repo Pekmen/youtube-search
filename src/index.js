@@ -9,10 +9,13 @@ import { loadState, saveState } from './localStorage';
 import './main.scss';
 
 const persistedState = loadState();
+
+// ReduxPromise will handle all promise fetching
 const storePromiseMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const store = storePromiseMiddleware(reducer, persistedState);
 
 
+// localstorage states
 store.subscribe(() => {
   saveState({
     videoCategories: store.getState().videoCategories,
