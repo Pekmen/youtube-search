@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reducer from './reducers';
 import { loadState, saveState } from './localStorage';
-import './main.css';
+import './main.scss';
 
 const persistedState = loadState();
 const storePromiseMiddleware = applyMiddleware(ReduxPromise)(createStore);
