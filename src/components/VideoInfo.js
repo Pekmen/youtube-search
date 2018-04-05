@@ -7,7 +7,7 @@ const VideoInfo = (props) => {
   const { video, saveVideo } = props;
   const thumbnail = video.thumbnails.standard ? video.thumbnails.standard : video.thumbnails.default;
   return (
-    <Col sm={3}>
+    <Col xs={12} sm={4} lg={3}>
       <div className="video-info-wrapper">
         <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank">
           <Image src={thumbnail.url} responsive />
