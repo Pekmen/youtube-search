@@ -9,6 +9,8 @@ const videosInfo = (state = [], action) => {
           likes: videoInfo.statistics.likeCount,
           views: videoInfo.statistics.viewCount,
           channel: videoInfo.snippet.channelTitle,
+          categoryId: videoInfo.snippet.categoryId,
+          year: videoInfo.snippet.publishedAt.substring(0, 4),
         };
       });
       return videsInfoCollection;

@@ -15,6 +15,7 @@ const store = storePromiseMiddleware(reducer, persistedState);
 
 store.subscribe(() => {
   saveState({
+    videoCategories: store.getState().videoCategories,
     savedVideos: store.getState().savedVideos,
   });
 });

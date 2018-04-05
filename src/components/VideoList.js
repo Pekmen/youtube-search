@@ -12,11 +12,18 @@ class VideoList extends React.Component {
   }
 
   render() {
-    const { showingSaved, saveVideo, savedVideos, videosInfo } = this.props;
+    const { showingSaved, saveVideo, savedVideos, videosInfo, filters } = this.props;
     const videosSource = showingSaved ? savedVideos : videosInfo;
     const saveVideoAction = showingSaved ? null : saveVideo;
-    // const videoInfoList = this.props.videosInfo.map(video => <VideoInfo key={video.id} video={video} saveVideo={this.props.saveVideo} />);
-    const videoInfoList = videosSource.map(video => <VideoInfo key={video.id} video={video} saveVideo={saveVideoAction}/>);
+    const videoInfoList = videosSource.map((video) => {
+      return (
+        <VideoInfo
+          key={video.id}
+          video={video}
+          saveVideo={saveVideoAction}
+        />
+      );
+    });
 
     return (
       <div>
@@ -29,6 +36,7 @@ class VideoList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     savedVideos: state.savedVideos,
+    filters: state.filters,
   };
 };
 

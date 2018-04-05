@@ -13,13 +13,15 @@ class SearchInput extends React.Component {
 
   onChangeHandler(value) {
     this.setState({ value });
+    this.props.setSearchTerm(value);
     this.props.fetchAutosuggest(value);
   }
 
   onSelectHandler(value) {
     this.setState({ value });
-    this.props.fetchVideosList(value)
-    .then(result => this.props.fetchVideosInfo(result));
+    this.props.setSearchTerm(value);
+    this.props.fetchVideosList(value, this.props.filters.categoryId)
+      .then(result => this.props.fetchVideosInfo(result.payload.items));
   }
 
   render() {
