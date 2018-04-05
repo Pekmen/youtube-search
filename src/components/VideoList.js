@@ -28,11 +28,13 @@ class VideoList extends React.Component {
     });
 
     return (
-      <Grid>
-        <Row>
-          {videoInfoList}
-        </Row>
-      </Grid>
+      <div className="video-list">
+        <Grid>
+          <Row>
+            {videoInfoList}
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }

@@ -1,12 +1,34 @@
 .searchbar-wrapper {
   background: red;
+  padding: 2em 4em 0;
+  position: relative;
+  z-index: 999;
+
+  span.year-filter {
+    color: #ffffff;
+    font-size: 1em;
+  }
+}
+
+.video-list {
+  margin-top: 2em;
 }
 
 .video-info-wrapper {
   margin-bottom: 3em;
+  height: 20em;
+
+  .video-title {
+    max-height: 3em;
+  }
 
   img {
     width: 100%;
+  }
+
+  .save-button {
+    float: right;
+    font-size: 0.8em;
   }
 
   .video-views,
@@ -22,4 +44,7 @@
     float: right;
   }
 
+  .info-1 {
+    margin-bottom: 1em;
+  }
 }

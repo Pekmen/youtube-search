@@ -30,7 +30,7 @@ class CategoryFilter extends React.Component {
           value={this.state.yearValue}
           onChange={e => this.onChangeHandler(e)}
         />
-        <span>{this.state.yearValue}</span>
+        <span className="year-filter">{this.state.yearValue}</span>
       </FormGroup>
     );
   }

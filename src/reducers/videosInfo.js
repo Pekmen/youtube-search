@@ -4,7 +4,7 @@ const videosInfo = (state = [], action) => {
       const videsInfoCollection = action.payload.items.map((videoInfo) => {
         return {
           id: videoInfo.id,
-          thumbnail: videoInfo.snippet.thumbnails.default,
+          thumbnails: videoInfo.snippet.thumbnails,
           title: videoInfo.snippet.title,
           likes: videoInfo.statistics.likeCount,
           views: videoInfo.statistics.viewCount,
