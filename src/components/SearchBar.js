@@ -50,7 +50,7 @@ class SearchBar extends React.Component {
                 searchVideos={this.searchVideos}
               />
             </Col>
-            <Col sm={3}>
+            <Col xs={6} sm={3}>
               <CategoryFilter
                 videoCategories={this.props.videoCategories}
                 setCategoryFilter={this.props.setCategoryFilter}
@@ -59,7 +59,7 @@ class SearchBar extends React.Component {
                 searchVideos={this.searchVideos}
               />
             </Col>
-            <Col sm={3}>
+            <Col xs={6} sm={3}>
               <YearFilter
                 searchTerm={this.props.searchTerm}
                 filters={this.props.filters}

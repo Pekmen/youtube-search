@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
-import { Button } from 'react-bootstrap';
+import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 
 
 class SearchInput extends React.Component {
@@ -57,9 +57,7 @@ class SearchInput extends React.Component {
             }
           }
         />
-        <Button className="search-btn" onClick={() => this.props.searchVideos(this.state.value, categoryId, year)}>
-          Search
-        </Button>
+        <i className="fas fa-lg fa-search search-icon" />
       </div>
     );
   }
