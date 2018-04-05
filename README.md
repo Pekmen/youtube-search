@@ -2,6 +2,7 @@
 
 A web app for browsing and saving Youtube videos.
 Backend is a simple webpack dev server, and frontend is done with React/Redux.
+Autocomplete might be a bit slow, since requests are sent through external CORS proxy server
 
 ## HOW DO I RUN IT?
 
