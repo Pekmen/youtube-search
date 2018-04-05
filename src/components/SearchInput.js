@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
-import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 
 
 class SearchInput extends React.Component {
@@ -26,7 +25,6 @@ class SearchInput extends React.Component {
   }
 
   render() {
-    const { categoryId, year } = this.props.filters;
     return (
       <div className="search-input-wrapper">
         <ReactAutocomplete
@@ -36,7 +34,7 @@ class SearchInput extends React.Component {
           renderItem={(item, highlighted) => (
             <div
               key={item.id}
-              style={{ backgroundColor: highlighted ? '#eee' : 'transparent', zIndex: 999 }}
+              style={{ backgroundColor: highlighted ? '#eee' : '#fff', zIndex: 999 }}
             >
               {item.label}
             </div>
@@ -49,11 +47,11 @@ class SearchInput extends React.Component {
               borderRadius: '3px',
               boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
               background: 'rgba(255, 255, 255, 0.9)',
-              padding: '2px 0',
+              padding: '4px 0 0 10px',
               fontSize: '90%',
               position: 'fixed',
               overflow: 'auto',
-              maxHeight: '50%', // TODO: don't cheat, let it flow to the bottom
+              maxHeight: '50%',
             }
           }
         />

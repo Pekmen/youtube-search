@@ -41,7 +41,6 @@ body {
     float: right;
     padding-top: 8px;
   }
-
 }
 
 .video-list {
@@ -53,6 +52,7 @@ body {
   height: 20em;
 
   .video-title {
+    min-height: 2em;
     max-height: 3em;
   }
 

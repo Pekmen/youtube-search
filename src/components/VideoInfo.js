@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 const VideoInfo = (props) => {
   const { video, saveVideo } = props;
@@ -24,11 +25,11 @@ const VideoInfo = (props) => {
           </div>
           <div className="info-2">
           {(video.views)
-            ? <span className="video-views">{video.views} {video.views.substring(-1) === '1' ? 'view' : 'views' }</span>
+            ? <span className="video-views">{numberWithCommas(video.views)} <i className="fas fa-eye" /></span>
             : null
           }
           {(video.likes)
-            ? <span className="video-likes">{video.likes} {video.likes.substring(-1) === '1' ? 'like' : 'likes' }</span>
+            ? <span className="video-likes">{numberWithCommas(video.likes)} <i className="fas fa-thumbs-up" /></span>
             : null
           }
           </div>
