@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
 import { Button } from 'react-bootstrap';
 
@@ -18,14 +19,14 @@ class SearchInput extends React.Component {
   }
 
   onSelectHandler(value) {
-    const { categoryId, year } = this.props;
+    const { categoryId, year } = this.props.filters;
     this.setState({ value });
     this.props.setSearchTerm(value);
     this.props.searchVideos(value, categoryId, year);
   }
 
   render() {
-    const { categoryId, year } = this.props;
+    const { categoryId, year } = this.props.filters;
     return (
       <div>
         <ReactAutocomplete
@@ -49,5 +50,16 @@ class SearchInput extends React.Component {
     );
   }
 }
+
+SearchInput.propTypes = {
+  filters: PropTypes.shape({
+    categoryId: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
+  fetchAutosuggest: PropTypes.func.isRequired,
+  searchVideos: PropTypes.func.isRequired,
+};
+
 
 export default SearchInput;

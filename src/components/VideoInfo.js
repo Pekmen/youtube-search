@@ -1,5 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 
 const VideoInfo = (props) => {
   const { video, saveVideo } = props;
@@ -13,6 +15,20 @@ const VideoInfo = (props) => {
     }
     </Col>
   );
+};
+
+VideoInfo.propTypes = {
+  saveVideo: PropTypes.func.isRequired,
+  video: PropTypes.shape({
+    categoryId: PropTypes.string,
+    channel: PropTypes.string,
+    id: PropTypes.string,
+    likes: PropTypes.string,
+    thumbnail: PropTypes.object,
+    title: PropTypes.string,
+    views: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
 };
 
 export default VideoInfo;

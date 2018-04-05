@@ -1,4 +1,4 @@
-const filters = (state = { categoryId: 0, year: '2018' }, action) => {
+const filters = (state = { categoryId: '0', year: '2018' }, action) => {
   if (action.type === 'SET_CATEGORY_FILTER') {
     return {
       categoryId: action.categoryId,

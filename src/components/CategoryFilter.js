@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+
 
 const CategoryFilter = (props) => {
 
@@ -23,5 +25,16 @@ const CategoryFilter = (props) => {
     </FormGroup>
   );
 };
+
+CategoryFilter.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  filters: PropTypes.shape({
+    categoryId: PropTypes.string,
+    year: PropTypes.string,
+  }).isRequired,
+  videoCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setCategoryFilter: PropTypes.func.isRequired,
+  searchVideos: PropTypes.func.isRequired,
+}
 
 export default CategoryFilter;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import VideoInfo from '../components/VideoInfo';
@@ -12,9 +13,9 @@ class VideoList extends React.Component {
   }
 
   render() {
-    const { showingSaved, saveVideo, savedVideos, videosInfo, filters } = this.props;
+    const { showingSaved, savedVideos, videosInfo } = this.props;
     const videosSource = showingSaved ? savedVideos : videosInfo;
-    const saveVideoAction = showingSaved ? null : saveVideo;
+    const saveVideoAction = showingSaved ? null : this.props.saveVideo;
     const videoInfoList = videosSource.map((video) => {
       return (
         <VideoInfo
@@ -32,6 +33,18 @@ class VideoList extends React.Component {
     );
   }
 }
+
+
+VideoList.propTypes = {
+  showingSaved: PropTypes.bool,
+  saveVideo: PropTypes.func.isRequired,
+  savedVideos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  videosInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+VideoList.defaultProps = {
+  showingSaved: false,
+};
 
 const mapStateToProps = (state) => {
   return {
